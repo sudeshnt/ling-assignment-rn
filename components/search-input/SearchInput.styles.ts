@@ -4,14 +4,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    paddingHorizontal: 20,
   },
   searchInput: {
-    width: "73%",
+    flex: 1,
+    height: 55,
   },
   searchButton: {
     width: "25%",
+    height: 55,
+    justifyContent: "center",
+    borderRadius: 28,
   },
 });
 

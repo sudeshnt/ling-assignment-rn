@@ -1,7 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
-import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet, View } from "react-native";
 import { Appbar, PaperProvider } from "react-native-paper";
+import { RootSiblingParent } from "react-native-root-siblings";
 import { COLORS } from "./constants";
 import usersJSON from "./data/leaderboard.json";
 import Home from "./screens/home/Home";
@@ -9,28 +10,27 @@ import useUserStore from "./store/users";
 import { getUsersListFromLeaderboard } from "./utils";
 
 export default function App() {
-  const populateUsers = useUserStore((state) => state.populateUsers);
+  const populateAllUsers = useUserStore((state) => state.populateAllUsers);
 
   useEffect(() => {
     const users = getUsersListFromLeaderboard(usersJSON);
-    populateUsers(users);
+    populateAllUsers(users);
   }, []);
 
   return (
-    <PaperProvider>
-      <SafeAreaView style={styles.scrollArea}>
-        <StatusBar style="auto" />
-        <Appbar.Header statusBarHeight={0}>
-          <Appbar.Content title="Title" />
-        </Appbar.Header>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          style={styles.container}
-        >
-          <Home />
-        </ScrollView>
-      </SafeAreaView>
-    </PaperProvider>
+    <RootSiblingParent>
+      <PaperProvider>
+        <SafeAreaView style={styles.scrollArea}>
+          <StatusBar style="auto" />
+          <Appbar.Header statusBarHeight={0} style={styles.appBar}>
+            <Appbar.Content title="Banana Leaderboard" />
+          </Appbar.Header>
+          <View style={styles.container}>
+            <Home />
+          </View>
+        </SafeAreaView>
+      </PaperProvider>
+    </RootSiblingParent>
   );
 }
 
@@ -39,8 +39,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.lightWhite,
   },
+  appBar: {
+    backgroundColor: COLORS.lightWhite,
+  },
   container: {
     flex: 1,
-    paddingHorizontal: 20,
+    paddingTop: 25,
   },
 });

@@ -8,4 +8,9 @@ export type User = {
   uid: string;
 };
 
+export type LeaderBoardUser = User & {
+  rank: number;
+  isSearchedUser?: boolean;
+};
+
 export type LeaderBoard = Record<string, User>;

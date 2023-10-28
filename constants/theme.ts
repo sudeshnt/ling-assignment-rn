@@ -8,9 +8,13 @@ export const COLORS = {
 
   white: "#F3F4F8",
   lightWhite: "#FAFAFC",
+
+  success: "#34cc94",
+  error: "#bf3f4f",
 };
 
 export const SHADOWS = {
+  error: "#fabebe",
   small: {
     shadowColor: "#000",
     shadowOffset: {
