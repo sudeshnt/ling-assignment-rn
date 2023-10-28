@@ -8,7 +8,7 @@ import {
 import { UserState } from "./types";
 
 const NO_OF_FILTERED_USERS = 10;
-const PAGE_SIZE = 100;
+const PAGE_SIZE = 20;
 
 const useUserStore = create<UserState>((set, get) => ({
   allUsers: [],
