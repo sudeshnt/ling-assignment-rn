@@ -19,7 +19,6 @@ export default function SearchInput() {
   };
 
   const handleClickSearchButton = () => {
-    console.log("Click Search Button");
     try {
       searchUser(searchText.toLowerCase());
     } catch (err) {
@@ -28,7 +27,7 @@ export default function SearchInput() {
         backgroundColor: COLORS.error,
         opacity: 0.9,
         shadowColor: SHADOWS.error,
-        position: 300,
+        position: 255,
       });
     }
   };

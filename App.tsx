@@ -7,13 +7,13 @@ import { COLORS } from "./constants";
 import usersJSON from "./data/leaderboard.json";
 import Home from "./screens/home/Home";
 import useUserStore from "./store/users";
-import { getUsersListFromLeaderboard } from "./utils";
+import { getUsersListFromLeaderboardObject } from "./utils";
 
 export default function App() {
   const populateAllUsers = useUserStore((state) => state.populateAllUsers);
 
   useEffect(() => {
-    const users = getUsersListFromLeaderboard(usersJSON);
+    const users = getUsersListFromLeaderboardObject(usersJSON);
     populateAllUsers(users);
   }, []);
 
@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    paddingTop: 25,
+    paddingTop: 10,
   },
 });

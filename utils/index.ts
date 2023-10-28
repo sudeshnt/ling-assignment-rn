@@ -2,7 +2,7 @@ import isEmpty from "lodash/isEmpty";
 import orderBy from "lodash/orderBy";
 import { LeaderBoard, LeaderBoardUser, User } from "../types";
 
-export const getUsersListFromLeaderboard = (
+export const getUsersListFromLeaderboardObject = (
   leaderboard: LeaderBoard = {}
 ): User[] => {
   if (isEmpty(leaderboard)) return [];
@@ -18,11 +18,35 @@ export const getUsersListFromLeaderboard = (
   }));
 };
 
-export const getSortedBananaLeaderBoard = (
+export const getRankedUserListByBananaCount = (
   users: User[]
 ): LeaderBoardUser[] => {
-  return orderBy(users, "bananas", "desc").map((user, index) => ({
-    ...user,
-    rank: index + 1,
-  }));
+  let currentRank = 1;
+  let prevNumberOfBananas: number;
+  return orderBy(users, "bananas", "desc").map((user, index) => {
+    if (index > 0 && prevNumberOfBananas !== user.bananas) {
+      currentRank++;
+    }
+    prevNumberOfBananas = user.bananas;
+    return { ...user, rank: currentRank };
+  });
+};
+
+export const generateUidToRankMap = (leaderBoardUsers: LeaderBoardUser[]) => {
+  return leaderBoardUsers.reduce((acc, leaderboardUser) => {
+    return {
+      ...acc,
+      [leaderboardUser.uid]: leaderboardUser.rank,
+    };
+  }, {} as Record<string, number>);
+};
+
+export const getUserIndexByName = (
+  leaderBoardUsers: LeaderBoardUser[],
+  searchText: string
+) => {
+  return leaderBoardUsers.findIndex((user) => {
+    let regex = new RegExp(`\\b${searchText}\\b`);
+    return regex.test(user.name.toLowerCase());
+  });
 };

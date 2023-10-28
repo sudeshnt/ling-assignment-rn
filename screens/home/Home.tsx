@@ -4,7 +4,7 @@ import UserList from "../../components/user-list/UserList";
 
 export default function Home() {
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <SearchInput />
       <UserList />
     </View>
