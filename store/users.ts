@@ -1,11 +1,8 @@
-import { create } from "zustand";
-import { User } from "../types";
-import {
-  generateUidToRankMap,
-  getRankedUserListByBananaCount,
-  getUserIndexByName,
-} from "../utils";
-import { UserState } from "./types";
+import { create } from 'zustand';
+
+import { UserState } from './types';
+import { User } from '../types';
+import { generateUidToRankMap, getRankedUserListByBananaCount, getUserIndexByName } from '../utils';
 
 const NO_OF_FILTERED_USERS = 10;
 const PAGE_SIZE = 20;
@@ -14,7 +11,7 @@ const initialState = {
   allUsers: [],
   bananaLeaderboard: [],
   userList: [],
-  searchText: "",
+  searchText: '',
   currentPage: 1,
   totalPages: 1,
   isSearchData: false,
@@ -47,9 +44,7 @@ const useUserStore = create<UserState>((set, get) => ({
 
       if (userIndex < 0) {
         set({ userList: [], isSearchData: true });
-        throw new Error(
-          "This user name does not exist! Please specify an existing user name!"
-        );
+        throw new Error('This user name does not exist! Please specify an existing user name!');
       }
 
       const topUsers = bananaLeaderboard.slice(0, NO_OF_FILTERED_USERS);

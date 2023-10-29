@@ -1,10 +1,9 @@
-import isEmpty from "lodash/isEmpty";
-import orderBy from "lodash/orderBy";
-import { LeaderBoard, LeaderBoardUser, User } from "../types";
+import isEmpty from 'lodash/isEmpty';
+import orderBy from 'lodash/orderBy';
 
-export const getUsersListFromLeaderboardObject = (
-  leaderboard: LeaderBoard = {}
-): User[] => {
+import { LeaderBoard, LeaderBoardUser, User } from '../types';
+
+export const getUsersListFromLeaderboardObject = (leaderboard: LeaderBoard = {}): User[] => {
   if (isEmpty(leaderboard)) return [];
 
   return Object.entries(leaderboard).map(([uid, user]) => ({
@@ -18,15 +17,13 @@ export const getUsersListFromLeaderboardObject = (
   }));
 };
 
-export const getRankedUserListByBananaCount = (
-  users: User[]
-): LeaderBoardUser[] => {
+export const getRankedUserListByBananaCount = (users: User[]): LeaderBoardUser[] => {
   if (isEmpty(users)) return [];
 
   let currentRank = 1;
   let currentHighestBananaCount: number;
 
-  return orderBy(users, "bananas", "desc").map((user, index) => {
+  return orderBy(users, 'bananas', 'desc').map((user, index) => {
     if (index > 0 && user.bananas < currentHighestBananaCount) {
       currentRank++;
     }
@@ -36,20 +33,20 @@ export const getRankedUserListByBananaCount = (
 };
 
 export const generateUidToRankMap = (leaderBoardUsers: LeaderBoardUser[]) => {
-  return leaderBoardUsers.reduce((acc, leaderboardUser) => {
-    return {
-      ...acc,
-      [leaderboardUser.uid]: leaderboardUser.rank,
-    };
-  }, {} as Record<string, number>);
+  return leaderBoardUsers.reduce(
+    (acc, leaderboardUser) => {
+      return {
+        ...acc,
+        [leaderboardUser.uid]: leaderboardUser.rank,
+      };
+    },
+    {} as Record<string, number>,
+  );
 };
 
-export const getUserIndexByName = (
-  leaderBoardUsers: LeaderBoardUser[],
-  searchText: string
-) => {
+export const getUserIndexByName = (leaderBoardUsers: LeaderBoardUser[], searchText: string) => {
   return leaderBoardUsers.findIndex((user) => {
-    let regex = new RegExp(`\\b${searchText}\\b`);
+    const regex = new RegExp(`\\b${searchText}\\b`);
     return regex.test(user.name.toLowerCase());
   });
 };

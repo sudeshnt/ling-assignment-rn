@@ -1,6 +1,7 @@
-import { Image, View } from "react-native";
-import { emptyResult } from "../../../constants";
-import styles from "./EmptyList.styles";
+import { Image, View } from 'react-native';
+
+import styles from './EmptyList.styles';
+import { emptyResult } from '../../../constants';
 
 export default function EmptyList() {
   return (

@@ -1,9 +1,10 @@
-import { View } from "react-native";
-import { Searchbar } from "react-native-paper";
-import Toast from "react-native-root-toast";
-import { COLORS, SHADOWS } from "../../constants";
-import useUserStore from "../../store/users";
-import styles from "./SearchInput.styles";
+import { View } from 'react-native';
+import { Searchbar } from 'react-native-paper';
+import Toast from 'react-native-root-toast';
+
+import styles from './SearchInput.styles';
+import { COLORS, SHADOWS } from '../../constants';
+import useUserStore from '../../store/users';
 
 export default function SearchInput() {
   const searchText = useUserStore((state) => state.searchText);

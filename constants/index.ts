@@ -1,3 +1,3 @@
-export { COLORS, SHADOWS } from "./theme";
+export { COLORS, SHADOWS } from './theme';
 
-export { emptyResult } from "./images";
+export { emptyResult } from './images';

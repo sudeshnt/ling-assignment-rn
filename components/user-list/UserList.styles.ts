@@ -1,5 +1,6 @@
-import { StyleSheet } from "react-native";
-import { COLORS } from "../../constants";
+import { StyleSheet } from 'react-native';
+
+import { COLORS } from '../../constants';
 
 const styles = StyleSheet.create({
   container: {
@@ -8,7 +9,7 @@ const styles = StyleSheet.create({
     marginBottom: 120,
   },
   tableHeader: {
-    alignItems: "center",
+    alignItems: 'center',
   },
   rank: {
     maxWidth: 50,

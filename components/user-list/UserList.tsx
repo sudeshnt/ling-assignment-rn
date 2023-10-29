@@ -1,10 +1,11 @@
-import { ActivityIndicator, FlatList } from "react-native";
-import { DataTable, Icon } from "react-native-paper";
-import { COLORS } from "../../constants";
-import useUserStore from "../../store/users";
-import { LeaderBoardUser } from "../../types";
-import EmptyList from "./EmptyList/EmptyList";
-import styles from "./UserList.styles";
+import { ActivityIndicator, FlatList } from 'react-native';
+import { DataTable, Icon } from 'react-native-paper';
+
+import EmptyList from './EmptyList/EmptyList';
+import styles from './UserList.styles';
+import { COLORS } from '../../constants';
+import useUserStore from '../../store/users';
+import { LeaderBoardUser } from '../../types';
 
 export default function UserList() {
   const {
@@ -53,11 +54,8 @@ export default function UserList() {
                 key={user.uid}
                 style={{
                   backgroundColor:
-                    isSearchData && searchText && user.isSearchedUser
-                      ? COLORS.success
-                      : "none",
-                }}
-              >
+                    isSearchData && searchText && user.isSearchedUser ? COLORS.success : 'none',
+                }}>
                 <DataTable.Cell numeric style={styles.rank}>
                   #{user.rank}
                 </DataTable.Cell>
@@ -67,15 +65,13 @@ export default function UserList() {
                 </DataTable.Cell>
                 {isSearchData && (
                   <DataTable.Cell numeric style={styles.searchedUser}>
-                    {user.isSearchedUser ? "yes" : "no"}
+                    {user.isSearchedUser ? 'yes' : 'no'}
                   </DataTable.Cell>
                 )}
               </DataTable.Row>
             );
           }}
-          ListFooterComponent={
-            !isSearchData && !allDataLoaded ? <ActivityIndicator /> : null
-          }
+          ListFooterComponent={!isSearchData && !allDataLoaded ? <ActivityIndicator /> : null}
           ListFooterComponentStyle={styles.listFooterComponent}
         />
       </DataTable>

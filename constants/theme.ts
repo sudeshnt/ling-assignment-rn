@@ -1,22 +1,22 @@
 export const COLORS = {
-  primary: "#312651",
-  secondary: "#444262",
-  tertiary: "#FF7754",
+  primary: '#312651',
+  secondary: '#444262',
+  tertiary: '#FF7754',
 
-  gray: "#83829A",
-  gray2: "#C1C0C8",
+  gray: '#83829A',
+  gray2: '#C1C0C8',
 
-  white: "#F3F4F8",
-  lightWhite: "#FAFAFC",
+  white: '#F3F4F8',
+  lightWhite: '#FAFAFC',
 
-  success: "#34cc94",
-  error: "#bf3f4f",
+  success: '#34cc94',
+  error: '#bf3f4f',
 };
 
 export const SHADOWS = {
-  error: "#fabebe",
+  error: '#fabebe',
   small: {
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -26,7 +26,7 @@ export const SHADOWS = {
     elevation: 2,
   },
   medium: {
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,

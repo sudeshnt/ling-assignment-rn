@@ -1,13 +1,14 @@
-import { StatusBar } from "expo-status-bar";
-import { useEffect } from "react";
-import { SafeAreaView, StyleSheet, View } from "react-native";
-import { Appbar, PaperProvider } from "react-native-paper";
-import { RootSiblingParent } from "react-native-root-siblings";
-import { COLORS } from "./constants";
-import usersJSON from "./data/leaderboard.json";
-import Home from "./screens/home/Home";
-import useUserStore from "./store/users";
-import { getUsersListFromLeaderboardObject } from "./utils";
+import { StatusBar } from 'expo-status-bar';
+import { useEffect } from 'react';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { Appbar, PaperProvider } from 'react-native-paper';
+import { RootSiblingParent } from 'react-native-root-siblings';
+
+import { COLORS } from './constants';
+import usersJSON from './data/leaderboard.json';
+import Home from './screens/home/Home';
+import useUserStore from './store/users';
+import { getUsersListFromLeaderboardObject } from './utils';
 
 export default function App() {
   const populateAllUsers = useUserStore((state) => state.populateAllUsers);

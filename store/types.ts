@@ -1,4 +1,4 @@
-import { LeaderBoardUser, User } from "../types";
+import { LeaderBoardUser, User } from '../types';
 
 export type UserState = {
   allUsers: LeaderBoardUser[];

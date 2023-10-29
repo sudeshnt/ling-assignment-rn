@@ -1,8 +1,8 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
+    flexDirection: 'row',
     paddingHorizontal: 20,
     marginBottom: 20,
   },
@@ -11,9 +11,9 @@ const styles = StyleSheet.create({
     height: 55,
   },
   searchButton: {
-    width: "25%",
+    width: '25%',
     height: 55,
-    justifyContent: "center",
+    justifyContent: 'center',
     borderRadius: 28,
   },
 });

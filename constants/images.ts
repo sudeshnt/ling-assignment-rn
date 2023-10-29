@@ -1,1 +1,1 @@
-export const emptyResult = require("../assets/images/emptyResult.jpg");
+export const emptyResult = require('../assets/images/emptyResult.jpg');
