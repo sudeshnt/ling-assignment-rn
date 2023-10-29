@@ -9,7 +9,8 @@
     "web": "expo start --web",
     "test": "jest",
     "lint": "eslint .",
-    "fix-lint": "eslint . --fix"
+    "fix-lint": "eslint . --fix",
+    "prepare": "husky install"
   },
   "dependencies": {
     "expo": "~49.0.15",
@@ -33,6 +34,7 @@
     "@types/react": "~18.2.14",
     "eslint": "^8.52.0",
     "eslint-config-universe": "^12.0.0",
+    "husky": "^8.0.0",
     "prettier": "^3.0.3",
     "typescript": "^5.1.3"
   },
