@@ -10,7 +10,7 @@ import { UserState } from "./types";
 const NO_OF_FILTERED_USERS = 10;
 const PAGE_SIZE = 20;
 
-const useUserStore = create<UserState>((set, get) => ({
+const initialState = {
   allUsers: [],
   bananaLeaderboard: [],
   userList: [],
@@ -18,7 +18,10 @@ const useUserStore = create<UserState>((set, get) => ({
   currentPage: 1,
   totalPages: 1,
   isSearchData: false,
-  isLoading: false,
+};
+
+const useUserStore = create<UserState>((set, get) => ({
+  ...initialState,
   populateAllUsers: (users: User[]) => {
     const bananaLeaderboard = getRankedUserListByBananaCount(users);
     const uidToRankMap = generateUidToRankMap(bananaLeaderboard);
@@ -27,6 +30,7 @@ const useUserStore = create<UserState>((set, get) => ({
       rank: uidToRankMap[user.uid],
     }));
     const totalPages = Math.ceil(allUsersWithRank.length / PAGE_SIZE);
+
     set({
       bananaLeaderboard,
       allUsers: allUsersWithRank,
@@ -37,41 +41,46 @@ const useUserStore = create<UserState>((set, get) => ({
   searchUser: (searchText: string) => {
     try {
       if (!searchText) return;
-      set({ isLoading: true });
+
       const { bananaLeaderboard } = get();
       const userIndex = getUserIndexByName(bananaLeaderboard, searchText);
+
       if (userIndex < 0) {
-        set({ userList: [], isSearchData: true, isLoading: false });
+        set({ userList: [], isSearchData: true });
         throw new Error(
           "This user name does not exist! Please specify an existing user name!"
         );
       }
+
       const topUsers = bananaLeaderboard.slice(0, NO_OF_FILTERED_USERS);
       const searchedUser = {
         ...bananaLeaderboard[userIndex],
         isSearchedUser: true,
       };
+
       const lastIndex = NO_OF_FILTERED_USERS - 1;
       const replacingIndex = userIndex > lastIndex ? lastIndex : userIndex;
+
       topUsers[replacingIndex] = searchedUser;
-      set({ userList: topUsers, isSearchData: true, isLoading: false });
+
+      set({ userList: topUsers, isSearchData: true });
     } catch (err) {
       throw new Error((err as Error).message);
     }
   },
   fetchNextUserPage: () => {
-    set({ isLoading: true });
     const { currentPage, allUsers, userList } = get();
     const offset = currentPage * PAGE_SIZE;
     const nextPageData = allUsers.slice(offset, offset + PAGE_SIZE);
+
     set({
       userList: [...userList, ...nextPageData],
       currentPage: currentPage + 1,
-      isLoading: false,
     });
   },
   resetUserList: () => {
     const { allUsers } = get();
+
     set({
       userList: allUsers.slice(0, PAGE_SIZE),
       isSearchData: false,

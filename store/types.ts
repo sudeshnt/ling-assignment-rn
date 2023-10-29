@@ -8,7 +8,6 @@ export type UserState = {
   currentPage: number;
   totalPages: number;
   isSearchData: boolean;
-  isLoading: boolean;
   populateAllUsers: (users: User[]) => void;
   searchUser: (name: string) => void;
   fetchNextUserPage: () => void;

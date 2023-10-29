@@ -13,14 +13,13 @@ export default function UserList() {
     isSearchData,
     currentPage,
     totalPages,
-    isLoading,
     fetchNextUserPage,
   } = useUserStore((state) => state);
 
   const allDataLoaded = currentPage >= totalPages;
 
   const handleScrollEndReached = () => {
-    if (isSearchData || isLoading || allDataLoaded) {
+    if (isSearchData || allDataLoaded) {
       return;
     }
     fetchNextUserPage();
@@ -28,19 +27,6 @@ export default function UserList() {
 
   return (
     <>
-      {isLoading && (
-        <ActivityIndicator
-          size="large"
-          color="#00ff00"
-          style={{
-            position: "absolute",
-            left: 0,
-            right: 0,
-            top: -200,
-            bottom: 0,
-          }}
-        />
-      )}
       <DataTable style={styles.container}>
         <DataTable.Header style={styles.tableHeader}>
           <DataTable.Title numeric style={styles.rank}>

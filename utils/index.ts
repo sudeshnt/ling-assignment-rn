@@ -21,13 +21,16 @@ export const getUsersListFromLeaderboardObject = (
 export const getRankedUserListByBananaCount = (
   users: User[]
 ): LeaderBoardUser[] => {
+  if (isEmpty(users)) return [];
+
   let currentRank = 1;
-  let prevNumberOfBananas: number;
+  let currentHighestBananaCount: number;
+
   return orderBy(users, "bananas", "desc").map((user, index) => {
-    if (index > 0 && prevNumberOfBananas !== user.bananas) {
+    if (index > 0 && user.bananas < currentHighestBananaCount) {
       currentRank++;
     }
-    prevNumberOfBananas = user.bananas;
+    currentHighestBananaCount = user.bananas;
     return { ...user, rank: currentRank };
   });
 };
