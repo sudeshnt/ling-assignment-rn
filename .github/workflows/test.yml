@@ -13,5 +13,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: pnpm i
-      - run: pnpm test
+      - run: npm ci
+      - run: npm run test
