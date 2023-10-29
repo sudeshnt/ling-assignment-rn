@@ -21,14 +21,14 @@ export default function SearchInput() {
 
   const handleClickSearchButton = () => {
     try {
-      searchUser(searchText.toLowerCase());
+      searchUser(searchText.trim().toLowerCase());
     } catch (err) {
       Toast.show((err as Error).message, {
         duration: Toast.durations.LONG,
         backgroundColor: COLORS.error,
-        opacity: 0.9,
+        opacity: 0.8,
         shadowColor: SHADOWS.error,
-        position: 255,
+        position: 195,
       });
     }
   };

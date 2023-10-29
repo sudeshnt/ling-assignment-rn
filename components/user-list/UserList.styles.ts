@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     marginBottom: 120,
   },
   tableHeader: {
-    alignItems: 'center',
+    minHeight: 50,
   },
   rank: {
     maxWidth: 50,
@@ -17,6 +17,8 @@ const styles = StyleSheet.create({
   },
   bananas: {
     maxWidth: 60,
+    padding: 0,
+    alignContent: 'flex-end',
   },
   searchedUser: {
     maxWidth: 80,

@@ -1,11 +1,12 @@
-import { ActivityIndicator, FlatList } from 'react-native';
+import { ActivityIndicator, FlatList, View } from 'react-native';
 import { DataTable, Icon } from 'react-native-paper';
 
-import EmptyList from './EmptyList/EmptyList';
-import styles from './UserList.styles';
 import { COLORS } from '../../constants';
+import { banana, magnifyingGlass } from '../../constants/images';
 import useUserStore from '../../store/users';
 import { LeaderBoardUser } from '../../types';
+import EmptyList from './EmptyList/EmptyList';
+import styles from './UserList.styles';
 
 export default function UserList() {
   const {
@@ -29,20 +30,26 @@ export default function UserList() {
   return (
     <>
       <DataTable style={styles.container}>
-        <DataTable.Header style={styles.tableHeader}>
-          <DataTable.Title numeric style={styles.rank}>
-            Rank
-          </DataTable.Title>
-          <DataTable.Title>Name</DataTable.Title>
-          <DataTable.Title numeric style={styles.bananas}>
-            Bananas
-          </DataTable.Title>
-          {isSearchData && (
-            <DataTable.Title numeric style={styles.searchedUser}>
-              <Icon size={20} source="magnify" />
+        {userList.length > 0 ? (
+          <DataTable.Header style={styles.tableHeader}>
+            <DataTable.Title numeric style={styles.rank}>
+              Rank
             </DataTable.Title>
-          )}
-        </DataTable.Header>
+            <DataTable.Title>Name</DataTable.Title>
+            <DataTable.Title numeric style={styles.bananas}>
+              <View>
+                <Icon source={banana} size={25} />
+              </View>
+            </DataTable.Title>
+            {isSearchData && (
+              <DataTable.Title numeric style={styles.searchedUser}>
+                <View>
+                  <Icon size={28} source={magnifyingGlass} />
+                </View>
+              </DataTable.Title>
+            )}
+          </DataTable.Header>
+        ) : null}
         <FlatList
           data={userList}
           keyExtractor={(user: LeaderBoardUser) => user.uid}
@@ -59,13 +66,13 @@ export default function UserList() {
                 <DataTable.Cell numeric style={styles.rank}>
                   #{user.rank}
                 </DataTable.Cell>
-                <DataTable.Cell>{user.name}</DataTable.Cell>
+                <DataTable.Cell>{user.name || 'Anonymous'}</DataTable.Cell>
                 <DataTable.Cell numeric style={styles.bananas}>
-                  {user.bananas}
+                  {user.bananas.toLocaleString('en-EN')}
                 </DataTable.Cell>
                 {isSearchData && (
                   <DataTable.Cell numeric style={styles.searchedUser}>
-                    {user.isSearchedUser ? 'yes' : 'no'}
+                    {user.isSearchedUser ? 'Yes' : 'No'}
                   </DataTable.Cell>
                 )}
               </DataTable.Row>

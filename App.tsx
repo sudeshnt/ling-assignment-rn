@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { Platform, SafeAreaView, StyleSheet, View } from 'react-native';
 import { Appbar, PaperProvider } from 'react-native-paper';
 import { RootSiblingParent } from 'react-native-root-siblings';
 
@@ -42,9 +42,11 @@ const styles = StyleSheet.create({
   },
   appBar: {
     backgroundColor: COLORS.lightWhite,
+    marginTop: Platform.OS === 'android' ? 25 : 0,
+    paddingLeft: Platform.OS === 'android' ? 10 : 0,
   },
   container: {
     flex: 1,
-    paddingTop: 10,
+    paddingTop: 3,
   },
 });

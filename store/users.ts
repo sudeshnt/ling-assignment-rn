@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 
-import { UserState } from './types';
 import { User } from '../types';
 import { generateUidToRankMap, getRankedUserListByBananaCount, getUserIndexByName } from '../utils';
+import { UserState } from './types';
 
 const NO_OF_FILTERED_USERS = 10;
 const PAGE_SIZE = 20;
