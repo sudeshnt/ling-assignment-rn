@@ -12,13 +12,13 @@ const styles = StyleSheet.create({
   },
   rank: {
     maxWidth: 50,
-    paddingRight: 15,
+    paddingRight: 20,
   },
   bananas: {
     maxWidth: 60,
   },
   searchedUser: {
-    maxWidth: 100,
+    maxWidth: 80,
   },
   listFooterComponent: {
     padding: 20,

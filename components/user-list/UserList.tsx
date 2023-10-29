@@ -1,5 +1,5 @@
 import { ActivityIndicator, FlatList } from "react-native";
-import { DataTable } from "react-native-paper";
+import { DataTable, Icon } from "react-native-paper";
 import { COLORS } from "../../constants";
 import useUserStore from "../../store/users";
 import { LeaderBoardUser } from "../../types";
@@ -52,7 +52,7 @@ export default function UserList() {
           </DataTable.Title>
           {isSearchData && (
             <DataTable.Title numeric style={styles.searchedUser}>
-              Searched User?
+              <Icon size={20} source="magnify" />
             </DataTable.Title>
           )}
         </DataTable.Header>

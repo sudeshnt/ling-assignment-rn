@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "ling-assignment-rn",
-    "slug": "ling-assignment-rn",
+    "name": "Banana Leaderboard",
+    "slug": "banana-leaderboard",
+    "description": "Includes a searchable banana leaderboard",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -11,18 +12,34 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sudeshnt.bananaleaderboard"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.sudeshnt.bananaleaderboard"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "64df81ea-055a-4e3c-8b3a-e000ad4dcb60"
+      }
+    },
+    "owner": "sudeshnt",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/64df81ea-055a-4e3c-8b3a-e000ad4dcb60"
     }
   }
 }
