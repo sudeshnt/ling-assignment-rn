@@ -43,10 +43,10 @@
 ### Screenshots
 
 <div align="center">
-  <img src="public/screenshots/1.png" alt="Logo" height="300">
-  <img src="public/screenshots/2.png" alt="Logo" height="300">
-  <img src="public/screenshots/3.png" alt="Logo" height="300">
-  <img src="public/screenshots/4.png" alt="Logo" height="300">
+  <img src="assets/screenshots/1.png" alt="Logo" height="300">
+  <img src="assets/screenshots/2.png" alt="Logo" height="300">
+  <img src="assets/screenshots/3.png" alt="Logo" height="300">
+  <img src="assets/screenshots/4.png" alt="Logo" height="300">
   
 </div>
 <br />
